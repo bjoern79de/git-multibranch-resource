@@ -7,6 +7,10 @@ Tracks the commits in a [git](http://git-scm.com/) repository.
 
 * `uri`: *Required.* The location of the repository.
 
+* `username`: *Required.* The username of the repository.
+
+* `password`: *Required.* The password of the repository.
+
 * `branch`: *Required.* The branch to track.
 
 * `private_key`: *Optional.* Private key to use when pulling/pushing.

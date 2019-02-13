@@ -29,6 +29,16 @@ configure_git_ssl_verification() {
   fi
 }
 
+configure_credentials() {
+  local username=$(jq -r '.source.username // ""' < $1)
+  local password=$(jq -r '.source.password // ""' < $1)
+
+  rm -f $HOME/.netrc
+  if [ "$username" != "" -a "$password" != "" ]; then
+    echo "default login $username password $password" > $HOME/.netrc
+  fi
+}
+
 git_metadata() {
   local commit=$(git rev-parse HEAD | jq -R .)
   local author=$(git log -1 --format=format:%an | jq -s -R .)
